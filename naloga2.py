@@ -27,9 +27,17 @@ def naloga2(vhod: list, nacin: int) -> tuple[list, float]:
             Kompresijsko razmerje
     """
 
-    encode(vhod)
     izhod = []
-    R = float('nan')
+
+    if(nacin == 0): 
+        izhod = encode(vhod)
+        R = (len(izhod)*12)/(len(vhod)*8)
+    elif(nacin == 1): 
+        izhod = decode(vhod)
+        R = (len(vhod)*12)/(len(izhod)*8)
+
+    
+     
     return (izhod, R)
 
 def encode(vhod):
@@ -49,13 +57,5 @@ def encode(vhod):
     izhod.append(key)
     return izhod
 
-naloga2([
-        "B",
-        "R",
-        "B",
-        "R",
-        "R",
-        "R",
-        "R",
-        "R"
-    ], 0)
+def decode(vhod):
+    return 0
