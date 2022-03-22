@@ -38,12 +38,15 @@ def encode(vhod):
     N = ''
     i = 256
     for z in vhod:
-        if((N+z) in dict): N = N+z
+        if((N+z) in dict.values()): N = N+z
         else:
-            izhod.append(ord(N))
-            dict.update(i,(N+z))
+            key = [k for k, v in dict.items() if v == N][0]
+            izhod.append(key)
+            dict.update({i: (N+z)})
             N = z
             i = i + 1
+    key = [k for k, v in dict.items() if v == N][0]
+    izhod.append(key)
     return izhod
 
 naloga2([
